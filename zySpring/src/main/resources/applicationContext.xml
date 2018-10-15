@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+	<!--定义JDBCDao实列-->
+	<bean id="studentDao" class="com.newer.dao.StudentDaoImpl"/>
+	<bean id="courseDao" class="com.newer.dao.CourseDaoImpl"/>
+
+
+	<bean id="studentService" class="com.newer.service.StudentServiceImpl">
+		<!--setter方法注入-->
+		<!--DI:依赖注入，类属性引用的实列不由自己生成由外部框架注入-->
+		<!--IOC:控制反转-->
+		<property name="sDao" ref="studentDao"/>
+
+		<!--构造方法注入-->
+		<!--<constructor-arg ref="jdbcDao"/>-->
+	</bean>
+	<bean id="couresService" class="com.newer.service.CourseServiceImpl">
+		<property name="cDao" ref="courseDao"/>
+	</bean>
+	
+</beans>

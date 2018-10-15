@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hym.dao.OutstorageMapper">
+  <resultMap id="BaseResultMap" type="com.hym.pojo.Outstorage">
+    <result column="outstorageID" jdbcType="INTEGER" property="outstorageid" />
+    <result column="vin" jdbcType="VARCHAR" property="vin" />
+    <result column="carid" jdbcType="INTEGER" property="carid" />
+    <result column="outtime" jdbcType="DATE" property="outtime" />
+    <result column="outquantity" jdbcType="INTEGER" property="outquantity" />
+    <result column="worker" jdbcType="VARCHAR" property="worker" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="variable" jdbcType="INTEGER" property="variable" />
+    <result column="customerordid" jdbcType="INTEGER" property="customerordid" />
+  </resultMap>
+  <insert id="insert" parameterType="com.hym.pojo.Outstorage">
+    insert into outstorage (outstorageID, vin, carid, 
+      outtime, outquantity, worker, 
+      remark, variable, customerordid
+      )
+    values (#{outstorageid,jdbcType=INTEGER}, #{vin,jdbcType=VARCHAR}, #{carid,jdbcType=INTEGER}, 
+      #{outtime,jdbcType=DATE}, #{outquantity,jdbcType=INTEGER}, #{worker,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{variable,jdbcType=INTEGER}, #{customerordid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hym.pojo.Outstorage">
+    insert into outstorage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="outstorageid != null">
+        outstorageID,
+      </if>
+      <if test="vin != null">
+        vin,
+      </if>
+      <if test="carid != null">
+        carid,
+      </if>
+      <if test="outtime != null">
+        outtime,
+      </if>
+      <if test="outquantity != null">
+        outquantity,
+      </if>
+      <if test="worker != null">
+        worker,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="variable != null">
+        variable,
+      </if>
+      <if test="customerordid != null">
+        customerordid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="outstorageid != null">
+        #{outstorageid,jdbcType=INTEGER},
+      </if>
+      <if test="vin != null">
+        #{vin,jdbcType=VARCHAR},
+      </if>
+      <if test="carid != null">
+        #{carid,jdbcType=INTEGER},
+      </if>
+      <if test="outtime != null">
+        #{outtime,jdbcType=DATE},
+      </if>
+      <if test="outquantity != null">
+        #{outquantity,jdbcType=INTEGER},
+      </if>
+      <if test="worker != null">
+        #{worker,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="variable != null">
+        #{variable,jdbcType=INTEGER},
+      </if>
+      <if test="customerordid != null">
+        #{customerordid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

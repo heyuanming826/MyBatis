@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.newer.dao.ArticleMapper">
+
+    <resultMap id="ar1" type="Article">
+        <id property="arId" column="id"/>
+        <result property="arTitle" column="title"/>
+        <result property="arcontent" column="content"/>
+        <result property="arPublishTime" column="publish_time"/>
+        <collection property="auId" ofType="Author"  column="au_id"
+                     select="com.newer.dao.AuthorMapper.findAll">
+        </collection>
+    </resultMap>
+    <select id="findById" resultMap="ar1">
+        SELECT * FROM article WHERE id=#{arId}
+    </select>
+</mapper>  

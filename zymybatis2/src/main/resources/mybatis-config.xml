@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <typeAliases>
+        <typeAlias type="com.newer.bean.Article" alias="Article"></typeAlias>
+        <typeAlias type="com.newer.bean.ArticleCommt" alias="ArticleCommt"></typeAlias>
+        <typeAlias type="com.newer.bean.Author" alias="Author"></typeAlias>
+    </typeAliases>
+	<environments default="env1">
+        <environment id="env1">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/test00818?useSSL=true&amp;serverTimezone=Asia/Shanghai"/>
+                <property name="username" value="root"/>
+                <property name="password" value="hym"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="mapper/AuthorMapper.xml"/>
+        <mapper resource="mapper/ArticleCommt.xml"/>
+    </mappers>
+</configuration>

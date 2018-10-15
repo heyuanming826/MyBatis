@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="zySpring:war">
+    <output-path>$PROJECT_DIR$/zySpring/target</output-path>
+    <root id="archive" name="zySpring.war">
+      <element id="artifact" artifact-name="zySpring:war exploded" />
+    </root>
+  </artifact>
+</component>

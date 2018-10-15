@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="NPR:war">
+    <output-path>$PROJECT_DIR$/NPR/target</output-path>
+    <root id="archive" name="NPR.war">
+      <element id="artifact" artifact-name="NPR:war exploded" />
+    </root>
+  </artifact>
+</component>

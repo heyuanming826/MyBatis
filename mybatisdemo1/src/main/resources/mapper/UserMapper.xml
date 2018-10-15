@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--该映射文件用于映射UserDao接口-->
+<mapper namespace="com.newer.dao.UserDao">
+
+  <insert id="addUser" parameterType="User">
+    INSERT INTO  userinfo VALUES (null,#{userName},#{userPwd},#{userSex,jdbcType=VARCHAR},#{userEmail,jdbcType=VARCHAR})
+  </insert>
+
+  <update id="updateUser" parameterType="User">
+    UPDATE userinfo SET userpwd=#{userPwd} WHERE  userid=#{userId}
+  </update>
+
+  <delete id="deleteUser" parameterType="int">
+    DELETE FROM userinfo WHERE userid=#{userId}
+  </delete>
+
+  <select id="findById" resultType="User">
+    SELECT * FROM userinfo WHERE  userid=#{userId}
+  </select>
+
+  <select id="findAll" resultType="User">
+
+    SELECT * FROM userinfo
+  </select>
+</mapper>  

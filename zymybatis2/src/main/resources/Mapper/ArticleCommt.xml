@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.newer.dao.ArticleCommtMapper">
+
+    <resultMap id="ac1" type="ArticleCommt">
+        <id property="acId" column="acid"/>
+        <result property="au_id" column="uid"/>
+        <result property="ar_id" column="rid"/>
+        <result property="arcommTime" column="commt_time"/>
+        <association property="arId" javaType="Article" >
+            <id property="arId" column="arid"/>
+            <result property="arTitle" column="title"/>
+            <result property="arcontent" column="content"/>
+            <result property="arPublishTime" column="publish_time"/>
+        </association>
+       <collection property="auId" ofType="Author">
+           <id property="auId" column="auid"/>
+           <result property="auName" column="name"/>
+           <result property="auBirthday" column="birthday"/>
+       </collection>
+    </resultMap>
+    <select id="findAll" resultMap="ac1">
+        SELECT ac.id as acid,ac.au_id as uid,ac.ar_id as rid,ac.commt_time,au.id as auid,au.name,au.birthday,ar.id as arid,ar.title,ar.content,ar.publish_time FROM article_commt ac
+          LEFT JOIN author au ON ac.au_id=au.id
+          LEFT JOIN article ar ON  ac.ar_id=ar.id
+    </select>
+</mapper>  

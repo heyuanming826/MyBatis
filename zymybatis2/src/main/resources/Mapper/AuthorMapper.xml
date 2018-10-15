@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.newer.dao.AuthorMapper">
+    <resultMap id="au1" type="Author">
+        <id property="auId" column="auid"/>
+        <result property="auName" column="name"/>
+        <result property="auSex" column="ausex"/>
+       <collection property="arId" ofType="Article" >
+           <id property="arId" column="arid"/>
+           <result property="au_id" column="arauid"/>
+           <result property="arTitle" column="title"/>
+           <result property="arcontent" column="content"/>
+       </collection>
+        <collection property="acId" ofType="ArticleCommt">
+            <id property="acId" column="acid"/>
+            <result property="au_id" column="acauid"/>
+        </collection>
+    </resultMap>
+    <select id="findAll" resultMap="au1">
+          SELECT au.id as auid,name,sex,ar.id as arid,ar.au_id as acauid,title,content,ac.id as acid,ac.au_id as acauid FROM  author au LEFT JOIN article ar ON au.id=ar.au_id LEFT JOIN article_commt ac ON au.id=ac.au_id
+    </select>
+</mapper>

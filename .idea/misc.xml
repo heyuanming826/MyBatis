@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/mybatisdemo1" />
+    <file type="web" url="file://$PROJECT_DIR$/mybatisdemo22" />
+    <file type="web" url="file://$PROJECT_DIR$/mybatisdemo3" />
+    <file type="web" url="file://$PROJECT_DIR$/mybatisdemo4" />
+    <file type="web" url="file://$PROJECT_DIR$/NPR" />
+    <file type="web" url="file://$PROJECT_DIR$/sm1" />
+    <file type="web" url="file://$PROJECT_DIR$/springdemo" />
+    <file type="web" url="file://$PROJECT_DIR$/springdemo1" />
+    <file type="web" url="file://$PROJECT_DIR$/springdemo2" />
+    <file type="web" url="file://$PROJECT_DIR$/springdemo3" />
+    <file type="web" url="file://$PROJECT_DIR$/springdemo4" />
+    <file type="web" url="file://$PROJECT_DIR$/ssm1" />
+    <file type="web" url="file://$PROJECT_DIR$/ssm2" />
+    <file type="web" url="file://$PROJECT_DIR$/zymybatis" />
+    <file type="web" url="file://$PROJECT_DIR$/zymybatis2" />
+    <file type="web" url="file://$PROJECT_DIR$/zymybatis3" />
+    <file type="web" url="file://$PROJECT_DIR$/zySpring" />
+    <file type="web" url="file://$PROJECT_DIR$/zySpring2" />
+    <file type="web" url="file://$PROJECT_DIR$/zySpring3" />
+    <file type="web" url="file://$PROJECT_DIR$/zySprint1" />
+    <file type="web" url="file://$PROJECT_DIR$/zyssm" />
+    <file type="web" url="file://F:/新建文件夹/cheliang" />
+  </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="ES6" />
+  </component>
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/mybatisdemo1/pom.xml" />
+        <option value="F:/新建文件夹/cheliang/pom.xml" />
+      </list>
+    </option>
+    <option name="ignoredFiles">
+      <set>
+        <option value="$PROJECT_DIR$/mybatisdemo2/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatisdemo22/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatisdemo4/pom.xml" />
+      </set>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
+</project>

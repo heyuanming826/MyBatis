@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+
+	<bean id="customer" class="com.newer.aop.CustomerService" p:aspect="切面"/>
+	<bean id="doAfter" class="com.newer.aop.LogAfterReturning"/>
+	<bean id="doAround" class="com.newer.aop.LogAround"/>
+	
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="proxyService">
+		<property name="target" ref="customer"/>
+		<property name="interceptorNames">
+			<list>
+				<value>doAround</value>
+				<value>doAfter</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor" id="pointcut">
+		<property name="mappedName" value="delete"/>
+		<property name="advice" ref="doAround"/>
+	</bean>
+	
+</beans>

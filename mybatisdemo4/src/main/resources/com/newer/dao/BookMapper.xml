@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.newer.dao.BookMapper">
+  <resultMap id="BaseResultMap" type="com.newer.pojo.Book">
+    <result column="bookid" jdbcType="INTEGER" property="bookid" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="price" jdbcType="DOUBLE" property="price" />
+    <result column="au_id" jdbcType="INTEGER" property="auId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.newer.pojo.Book">
+    insert into bookinfo (bookid, title, price, 
+      au_id)
+    values (#{bookid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{price,jdbcType=DOUBLE}, 
+      #{auId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.newer.pojo.Book">
+    insert into bookinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="bookid != null">
+        bookid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="auId != null">
+        au_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="bookid != null">
+        #{bookid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="auId != null">
+        #{auId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

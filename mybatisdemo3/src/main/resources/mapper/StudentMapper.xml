@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--该映射文件用于映射UserDao接口-->
+<mapper namespace="com.newer.dao.StudentDao">
+  <resultMap id="stu1" type="Student">
+    <id property="stuId" column="stuid"/>
+    <result property="stuName" column="stuname"/>
+    <result property="stuSex" column="stusex"/>
+    <result property="stuJoinTime" column="stujointime"/>
+    <result property="stuCard" column="stucard"/>
+    <association property="sclassId" javaType="ClassInfo">
+      <id property="cId" column="cid"/>
+      <result property="cName" column="cname"/>
+    </association>
+  </resultMap>
+
+  <select id="findAll" resultMap="stu1">
+    SELECT stuid,stuname,stusex,stujointime,stucard,cid,cname FROM studentinfo s LEFT JOIN classinfo c on s.sclassid=c.cid
+  </select>
+
+  <resultMap id="stu2" type="Student">
+    <id property="stuId" column="stuid"/>
+    <result property="stuName" column="stuname"/>
+    <result property="stuSex" column="stusex"/>
+    <result property="stuJoinTime" column="stujointime"/>
+    <result property="stuCard" column="stucard"/>
+    <association property="sclassId" javaType="ClassInfo" column="sclassid"
+                 select="com.newer.dao.ClassInfoMapper.findById">
+
+    </association>
+  </resultMap>
+
+  <select id="findAll2" resultMap="stu2">
+    SELECT * FROM studentinfo
+  </select>
+
+  <select id="findByCid" resultType="Student">
+        SELECT * FROM stuinfo WHERE sclassid=#{classId}
+    </select>
+</mapper>  

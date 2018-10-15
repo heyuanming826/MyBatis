@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.newer.dao.StudentMapper">
+  
+  <resultMap id="student1" type="com.newer.pojo.Student">
+  		<id property="id" column="sid"/>
+  		<result property="name" column="sname"/>
+  		<result property="phone" column="phone"/>
+  		<result property="clazz_id" column="clazz_id"/>
+  		<association property="clazz" javaType="com.newer.pojo.Clazz">
+  			<id property="id" column="cid"/>
+  			<result property="name" column="cname"/>
+  		</association>
+  </resultMap>
+  
+</mapper>  

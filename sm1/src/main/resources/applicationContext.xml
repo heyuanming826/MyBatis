@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+		xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:p="http://www.springframework.org/schema/p"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:util="http://www.springframework.org/schema/util"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-4.1.xsd
+	http://www.springframework.org/schema/tx
+	http://www.springframework.org/schema/tx/spring-tx-4.1.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-4.1.xsd">
+<!--定义读取属性文件-->
+	<util:properties id="reader" location="classpath:mysql.properties"/>
+	<!--创建连接池数据源-->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="#{reader[driver]}"/>
+		<property name="jdbcUrl" value="#{reader[url]}"/>
+		<property name="user" value="#{reader[user]}"/>
+		<property name="password" value="#{reader[password]}"/>
+		<property name="initialPoolSize" value="5"/>
+		<property name="maxPoolSize" value="10"/>
+		<property name="minPoolSize" value="5"/>
+		<property name="maxIdleTime" value="120"/>
+
+	</bean>
+
+	<!--创建SqlSessionFactory-->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="mapperLocations" value="com/newer/dao/*.xml"/>
+	</bean>
+	<!--声明式事务-->
+	<!--定义事务管理器-->
+	<bean class="org.springframework.jdbc.datasource.DataSourceTransactionManager" id="transactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	<tx:advice id="advice1" transaction-manager="transactionManager">
+		<tx:attributes>
+			<!--propagation传播行为
+			REQUIRED：当前没有事务开启，则开启新事务，当前如果有事务开启，则加入已开启的事务-->
+			<tx:method name="add*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="update*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="delete*" propagation="REQUIRED" isolation="DEFAULT"/>
+			<tx:method name="*" propagation="NOT_SUPPORTED" read-only="true"/>
+		</tx:attributes>
+	</tx:advice>
+	<!--获取UserMapper实列-->
+	<bean id="userMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="sqlSessionFactory" ref="sqlSessionFactory"/>
+		<property name="mapperInterface" value="com.newer.dao.UserMapper"/>
+
+	</bean>
+
+	<!--定义Service实列-->
+	<bean id="userService" class="service.UserServiceImpl">
+		<property name="userMapper" ref="userMapper"/>
+
+	</bean>
+</beans>

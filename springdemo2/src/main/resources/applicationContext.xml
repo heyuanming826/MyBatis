@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+	<import resource="printer.xml"/>
+
+	<!--快速注入-->
+	<bean id="p1" class="com.newer.bean.Person" p:name="lily" p:age="25" scope="singleton"/>
+
+	<!--定义实例工厂Bean-->
+	<bean id="sdf" class="java.text.SimpleDateFormat">
+		<constructor-arg  value="yyyy-MM-dd"/>
+	</bean>
+
+	<bean id="p2" class="com.newer.bean.Person" p:name="战士" p:age="10" >
+		<property name="birth" >
+			<!--实例工厂注入-->
+			<!--<bean factory-bean="sdf" factory-method="parse">-->
+				<!--<constructor-arg value="2017-02-03"/>-->
+			<!--</bean>-->
+			<!--静态工厂注入-->
+			<bean class="java.sql.Date" factory-method="valueOf">
+				<constructor-arg value="2018-01-01"/>
+			</bean>
+		</property>
+
+
+	</bean>
+
+	<!--集合属性值注入-->
+	<bean id="c1" class="com.newer.bean.Customer">
+		<property name="persons">
+			<list >
+				<ref bean="p2"/>
+				<!--内部bean-->
+				<bean class="com.newer.bean.Person" p:name="关于" p:age="34"/>
+			</list>
+		</property>
+		<property name="map">
+			<map>
+				<entry key="A1" value-ref="p2"/>
+				<entry key="A2" >
+					<bean class="com.newer.bean.Person" p:name="Kary" p:age="33"/>
+				</entry>
+			</map>
+		</property>
+	</bean>
+	
+</beans>

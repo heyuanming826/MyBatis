@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mybatis 主配置文件-->
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--别名配置-->
+    <typeAliases>
+    <typeAlias type="com.newer.bean.User" alias="User"/>
+</typeAliases>
+
+	<!--配置数据源-->
+    <environments default="env1">
+        <environment id="env1">
+            <!--事务模式-->
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/test00818?useSSL=true&amp;serverTimezone=Asia/Shanghai"/>
+                <property name="username" value="root"/>
+                <property name="password" value="hym"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!--定义映射文件位置-->
+    <mappers>
+        <mapper resource="mapper/UserMapper.xml"/>
+    </mappers>
+</configuration>

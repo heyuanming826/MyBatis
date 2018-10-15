@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="zymybatis:war">
+    <output-path>$PROJECT_DIR$/zymybatis/target</output-path>
+    <root id="archive" name="zyMybatis.war">
+      <element id="artifact" artifact-name="zymybatis:war exploded" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+	<bean id="personService" class="com.newer.service.PersonService"  p:name="name"/>
+	<!--定义了一个通知的实列-->
+	<bean id="doBefore" class="com.newer.aop.DoBeforeMethod" />
+	<bean id="doAfter" class="com.newer.aop.DoAfterMethod"/>
+	<bean id="doExcp" class="com.newer.aop.DoExceptionMethod"/>
+	<bean id="doAround" class="com.newer.aop.DoAroundMethod"/>
+
+	<!--定义切入点-->
+	<bean class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor" id="pointcut">
+		<property name="mappedName" value="addPerson"/>
+	</bean>
+	<bean class="org.springframework.aop.support.DefaultPointcutAdvisor" id="advisor1">
+		<property name="pointcut" ref="pointcut1"/>
+		<property name="advice" ref="doBefore"/>
+	</bean>
+	<!--代理工厂bean-->
+	<bean class="org.springframework.aop.framework.ProxyFactoryBean" id="proxyPersonService">
+		<!--配置代理对象-->
+		<property name="target" ref="personService"/>
+		<!--interceptor拦截-->
+		<property name="interceptorNames">
+			<list>
+				<!--<value>doBefore</value>-->
+			<!--<value>doAfter</value>-->
+				<!--<value>doExcp</value>-->
+				<value>doAround</value>
+			</list>
+		</property>
+	</bean>
+</beans>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="cheliang" />
+        <module name="mybatisdemo22" />
+        <module name="mybatisdemo3" />
+        <module name="mybatisdemo4" />
+        <module name="NPR" />
+        <module name="springdemo" />
+        <module name="zymybatis2" />
+        <module name="zymybatis3" />
+        <module name="zySpring2" />
+        <module name="zySpring3" />
+        <module name="zyssm" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel target="1.8">
+      <module name="cheliang" target="1.8" />
+      <module name="mybatisdemo1" target="1.8" />
+      <module name="mybatisdemo3" target="1.8" />
+      <module name="mybatisdemo4" target="1.8" />
+      <module name="NPR" target="1.8" />
+      <module name="sm1" target="1.8" />
+      <module name="smm2" target="1.5" />
+      <module name="springdemo1" target="1.8" />
+      <module name="springdemo2" target="1.8" />
+      <module name="springdemo3" target="1.8" />
+      <module name="springdemo4" target="1.8" />
+      <module name="ssm1" target="1.8" />
+      <module name="ssm2" target="1.8" />
+      <module name="zymybatis" target="1.8" />
+      <module name="zymybatis2" target="1.8" />
+      <module name="zymybatis3" target="1.8" />
+      <module name="zySpring" target="1.8" />
+      <module name="zySpring2" target="1.8" />
+      <module name="zySpring3" target="1.8" />
+      <module name="zySprint1" target="1.8" />
+      <module name="zyssm" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

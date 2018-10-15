@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/NPR/NPR.iml" filepath="$PROJECT_DIR$/NPR/NPR.iml" />
+      <module fileurl="file://F:/新建文件夹/cheliang/cheliang.iml" filepath="F:/新建文件夹/cheliang/cheliang.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatisdemo1/mybatisdemo1.iml" filepath="$PROJECT_DIR$/mybatisdemo1/mybatisdemo1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatisdemo3/mybatisdemo3.iml" filepath="$PROJECT_DIR$/mybatisdemo3/mybatisdemo3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatisdemo4/mybatisdemo4.iml" filepath="$PROJECT_DIR$/mybatisdemo4/mybatisdemo4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sm1/sm1.iml" filepath="$PROJECT_DIR$/sm1/sm1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springdemo/springdemo.iml" filepath="$PROJECT_DIR$/springdemo/springdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springdemo3/springdemo3.iml" filepath="$PROJECT_DIR$/springdemo3/springdemo3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springdemo4/springdemo4.iml" filepath="$PROJECT_DIR$/springdemo4/springdemo4.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm1/ssm1.iml" filepath="$PROJECT_DIR$/ssm1/ssm1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ssm2/ssm2.iml" filepath="$PROJECT_DIR$/ssm2/ssm2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zySpring2/zySpring2.iml" filepath="$PROJECT_DIR$/zySpring2/zySpring2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zySpring3/zySpring3.iml" filepath="$PROJECT_DIR$/zySpring3/zySpring3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zySprint1/zySprint1.iml" filepath="$PROJECT_DIR$/zySprint1/zySprint1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zymybatis/zymybatis.iml" filepath="$PROJECT_DIR$/zymybatis/zymybatis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zymybatis2/zymybatis2.iml" filepath="$PROJECT_DIR$/zymybatis2/zymybatis2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zymybatis3/zymybatis3.iml" filepath="$PROJECT_DIR$/zymybatis3/zymybatis3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zyssm/zyssm.iml" filepath="$PROJECT_DIR$/zyssm/zyssm.iml" />
+    </modules>
+  </component>
+</project>

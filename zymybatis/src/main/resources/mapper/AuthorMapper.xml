@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.newer.dao.AuthorDao">
+  <select id="finyAll" resultType="Author">
+    SELECT * FROM  author
+  </select>
+
+  <select id="author" resultType="author">
+    SELECT * FROM author WHERE id=#{id}
+  </select>
+
+  <delete id="deleteAuthor" parameterType="author">
+    DELETE FROM author WHERE id=#{id}
+  </delete>
+
+  <insert id="addAuthor" parameterType="author">
+    INSERT INTO  author VALUES (null,#{name},#{sex},#{birthday},#{address},#{phone})
+  </insert>
+
+  <update id="updateAuthor" parameterType="author">
+     UPDATE author set name=#{name},sex=#{sex},birthday=#{birthday},address=#{address},phone=#{phone} WHERE id=#{id}
+  </update>
+</mapper>  

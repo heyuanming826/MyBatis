@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="cheliang:war">
+    <output-path>F:/新建文件夹/cheliang/target</output-path>
+    <root id="archive" name="cheliang.war">
+      <element id="artifact" artifact-name="cheliang:war exploded" />
+    </root>
+  </artifact>
+</component>

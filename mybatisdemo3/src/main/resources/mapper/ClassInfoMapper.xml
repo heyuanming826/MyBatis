@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--该映射文件用于映射UserDao接口-->
+<mapper namespace="com.newer.dao.ClassInfoMapper">
+  <resultMap id="class1" type="ClassInfo">
+    <id property="cId" column="cid"/>
+    <result property="cName" column="cname"/>
+    <result property="cGrade" column="cgrade"/>
+  </resultMap>
+
+  <select id="findById" resultMap="class1">
+    SELECT * FROM classinfo WHERE  cid=#{cId}
+  </select>
+
+  <resultMap id="class2" type="ClassInfo">
+    <id property="cId" column="cid"/>
+    <result property="cName" column="cname"/>
+    <result property="cGrade" column="cgrade"/>
+    <collection property="students" ofType="Student" >
+      <id property="stuId" column="stuid"/>
+      <result property="stuName" column="stuname"/>
+      <result property="stuSex" column="stusex"/>
+      <result property="stuJoinTime" column="stujointime"/>
+    </collection>
+  </resultMap>
+
+  <select id="findAll" resultMap="class2" >
+    SELECT cid,cname,cgrade,stuid,
+         stuname,stusex,stujointime FROM classinfo c LEFT JOIN studentinfo s on c.cid=s.sclassid
+  </select>
+
+
+  <resultMap id="class3" type="ClassInfo">
+    <id property="cId" column="cid"/>
+    <result property="cName" column="cname"/>
+    <result property="cGrade" column="cgrade"/>
+    <collection property="students" ofType="Student" fetchType="lazy"
+    select="com.newer.dao.StudentDao.findByCid" column="cid">
+    </collection>
+  </resultMap>
+  <select id="findAll2" resultMap="class3">
+    SELECT * FROM classinfo
+  </select>
+</mapper>  

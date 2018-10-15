@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.newer.dao.ArticleMapper">
+
+    <resultMap id="ar1" type="Article">
+        <id property="arid" column="arid"/>
+        <result property="title" column="title"/>
+        <result property="content" column="content"/>
+        <result property="publish_time" column="publish_time"/>
+        <result property="au_id" column="au_id"/>
+        <collection property="author" javaType="Author"  >
+            <id property="auId" column="auid"/>
+            <result property="auName" column="name"/>
+        </collection>
+    </resultMap>
+
+    <sql id="sql1">
+        SELECT ar.id as arid,ar.title,ar.content,ar.publish_time,ar.au_id,au.id as auid,au.name FROM article ar
+    LEFT JOIN author au ON ar.id=au.id
+    </sql>
+
+    <select id="findAll" resultMap="ar1">
+      <include refid="sql1"/>
+        <include refid="wheresql"/>
+        <include refid="orderSql"/>
+        <include refid="pageSql"/>
+    </select>
+    <sql id="wheresql" >
+        <where>
+            <if test="arid!=null">
+                ar.id=#{arid}
+            </if>
+            <if test="title!=null and title!=''">
+                AND title LIKE #{title}
+            </if>
+            <if test="beginpublish_time!=null and endpublish_time!=null">
+                AND publish_time BETWEEN #{beginpublish_time} and #{endpublish_time}
+            </if>
+        </where>
+    </sql>
+    <sql id="orderSql">
+        ORDER BY
+        <choose>
+            <when test="order=='publish_time'">
+                publish_time
+            </when>
+            <when test="order=='content'">
+                content
+            </when>
+            <when test="order=='title'">
+                title
+            </when>
+            <otherwise> ar.id </otherwise>
+        </choose>
+        <if test="sort=='desc'">
+            DESC
+        </if>
+        <if test="sort==null or sort=='asc'">
+            ASC
+        </if>
+    </sql>
+    <sql id="pageSql">
+        <bind name="firstLine" value="(pageNo-1)*pageSize"/>
+        limit #{firstLine},#{pageSize}
+    </sql>
+
+</mapper>  
